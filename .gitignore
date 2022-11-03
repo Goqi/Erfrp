@@ -2,6 +2,7 @@
 *.o
 *.a
 *.so
+# ##########
 *.go
 *.yml
 *.yaml
@@ -19,7 +20,7 @@ pkg
 dockerfiles
 web
 hack
-
+# ##########
 # Folders
 _obj
 _test
