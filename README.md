@@ -6,12 +6,12 @@
 
 本项目创建于2022年4月18日，最近的更新时间为2022年11月16日。
 
-- [01-项目结构修改]()
-- [02-项目功能修改]()
-- [03-静态特征修改]()
-- [04-流量特征修改]()
-- [05-敏感信息隐藏]()
-- [06-参考项目资源]()
+- [01-项目结构修改](https://github.com/Goqi/Erfrp#01-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%BF%AE%E6%94%B9)
+- [02-项目功能修改](https://github.com/Goqi/Erfrp#02-%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E4%BF%AE%E6%94%B9)
+- [03-静态特征修改](https://github.com/Goqi/Erfrp#03-%E9%9D%99%E6%80%81%E7%89%B9%E5%BE%81%E4%BF%AE%E6%94%B9)
+- [04-流量特征修改](https://github.com/Goqi/Erfrp#04-%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81%E4%BF%AE%E6%94%B9)
+- [05-敏感信息隐藏](https://github.com/Goqi/Erfrp#05-%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F)
+- [06-参考项目资源](https://github.com/Goqi/Erfrp#06-%E5%8F%82%E8%80%83%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90)
 
 ## 01-项目结构修改
 
@@ -263,11 +263,8 @@
 ## 05-敏感信息隐藏
 
 - [ ] 服务端IP地址加密
-- [x] [程序运行后删除配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/cmd/frpc/root.go)
-  - frpc.exe --delini
-
-- [x] [远程加载配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/config/value.go)
-  - frpc.exe -c http://127.0.0.1/frpc.ini
+- [x] [程序运行后删除配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/cmd/frpc/root.go)：例子：frpc.exe --delini
+- [x] [远程加载配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/config/value.go)：例子：frpc.exe -c http://127.0.0.1/frpc.ini
 
 ## 06-参考项目资源
 
@@ -279,7 +276,6 @@
 - https://github.com/uknowsec/frpModify
 - https://github.com/NS-Sp4ce/Frp_modify
 - https://github.com/g0h3aler/frp-owner
-
 - https://www.nctry.com/2358.html
 - https://www.anquanke.com/post/id/231424
 - https://www.anquanke.com/post/id/231685
