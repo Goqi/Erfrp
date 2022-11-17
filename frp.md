@@ -1,7 +1,7 @@
 # frp
 
 [![Build Status](https://travis-ci.org/fatedier/frp.svg?branch=master)](https://travis-ci.org/fatedier/frp)
-[![GitHub release](https://img.shields.io/github/tag/fatedier/frp.svg?label=release)](https://github.com/fatedier/frp/releases)
+[![GitHub release](https://img.shields.io/github/tag/fatedier/frp.svg?label=release)](https://github.com/Goqi/Erfrp/releases)
 
 [README](README.md) | [中文文档](README_zh.md)
 
@@ -52,14 +52,14 @@ master 分支用于发布稳定版本，dev 分支用于开发，您可以尝试
 
 frp 是一个免费且开源的项目，我们欢迎任何人为其开发和进步贡献力量。
 
-* 在使用过程中出现任何问题，可以通过 [issues](https://github.com/fatedier/frp/issues) 来反馈。
+* 在使用过程中出现任何问题，可以通过 [issues](https://github.com/Goqi/Erfrp/issues) 来反馈。
 * Bug 的修复可以直接提交 Pull Request 到 dev 分支。
 * 如果是增加新的功能特性，请先创建一个 issue 并做简单描述以及大致的实现方法，提议被采纳后，就可以创建一个实现新特性的 Pull Request。
 * 欢迎对说明文档做出改善，帮助更多的人使用 frp，特别是英文文档。
 * 贡献代码请提交 PR 至 dev 分支，master 分支仅用于发布稳定可用版本。
 * 如果你有任何其他方面的问题或合作，欢迎发送邮件至 fatedier@gmail.com 。
 
-**提醒：和项目相关的问题最好在 [issues](https://github.com/fatedier/frp/issues) 中反馈，这样方便其他有类似问题的人可以快速查找解决方法，并且也避免了我们重复回答一些问题。**
+**提醒：和项目相关的问题最好在 [issues](https://github.com/Goqi/Erfrp/issues) 中反馈，这样方便其他有类似问题的人可以快速查找解决方法，并且也避免了我们重复回答一些问题。**
 
 ## 捐助
 

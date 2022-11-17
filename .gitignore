@@ -1,54 +1,12 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
-# ##########
-*.go
-*.yml
-*.yaml
-*.js
-*.woff
-*.ttf
-*.ico
-*.html
-*.ini
-*.png
-*.jpg
-*.sh
-doc
+.idea
+idea
+
+cmd
 pkg
-dockerfiles
-web
-hack
-# ##########
-# Folders
-_obj
-_test
+release
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
-
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
-
-_testmain.go
-
+*.go
 *.exe
-*.test
-*.prof
-
-# Self
-bin/
-packages/
-release/
-test/bin/
-vendor/
-dist/
-.idea/
-
-# Cache
-*.swp
+*.7z
+*.ini
+build.bat
