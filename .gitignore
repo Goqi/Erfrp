@@ -1,12 +1,8 @@
 .idea
 idea
 
-cmd
-pkg
 release
 
-*.go
 *.exe
 *.7z
 *.ini
-build.bat

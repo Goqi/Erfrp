@@ -1,10 +1,8 @@
-# Erfrp-[frp](https://github.com/fatedier/frp)二开-免杀与隐藏
+# Erfrp-frp二开-免杀与隐藏
 
-本项目是frp的二开项目。frp是fatedier开发的一款优秀的快速反向代理工具，可以将NAT或防火墙后面的本地服务器暴露在互联网上。但原程序对攻击队而言并不优雅，希望本项目可以为攻击队贡献完美的FRP二开项目！
+本项目是frp的二开项目。[frp](https://github.com/fatedier/frp)是fatedier开发的一款优秀的反向代理工具，可以将本地服务器暴露在互联网上。但原程序对攻击队而言并不优雅，希望本项目可以为攻击队贡献一个完美的FRP二开项目！作者：[0e0w](https://github.com/0e0w)
 
-目前程序和代码未发布，敬请期待！
-
-本项目创建于2022年4月18日，最近的更新时间为2022年11月16日。
+本项目创建于2022年4月18日，最近的更新时间为2022年11月18日。
 
 - [01-项目结构修改](https://github.com/Goqi/Erfrp#01-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%BF%AE%E6%94%B9)
 - [02-项目功能修改](https://github.com/Goqi/Erfrp#02-%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E4%BF%AE%E6%94%B9)
@@ -14,6 +12,8 @@
 - [06-参考项目资源](https://github.com/Goqi/Erfrp#06-%E5%8F%82%E8%80%83%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90)
 
 ## 01-项目结构修改
+
+本项目基于frp-0.45.0。对项目结构进行了调整，调整后的项目结构如下：
 
 ```
 │  frpc.go
@@ -94,10 +94,8 @@
 │  ├─consts
 │  │      consts.go
 │  │      
-│  ├─crypto
+│  ├─dscrypto
 │  │      aes.go
-│  │      aes1.go
-│  │      aes2.go
 │  │      des.go
 │  │      md5.go
 │  │      rsa.go
@@ -249,25 +247,106 @@
 ## 02-项目功能修改
 
 - [x] 程序运行判断是否存在frpc.ini或frps.ini文件，不存在则自动创建。
-- [ ] 加入命令执行模块
-- [ ] 全部的参数都从ini文件获取？or 全部的参数都写到go文件中？
+
+  ```
+  // 自动生成frpc.ini和frps.ini
+  func init() {
+  	frpcini := "frpc.ini"
+  	if _, errFileExist := os.Stat(frpcini); errFileExist != nil {
+  		f, err := os.Create(frpcini)
+  		if err != nil {
+  			os.Exit(1)
+  		}
+  		_, err = f.Write(config.DefaultiniBytefrpc)
+  	}
+  
+  }
+  ```
+
+- [ ] 全部的参数都从ini文件获取？or 全部的参数都写到go文件中？#Todo
+
+- [ ] 加入命令执行模块#Todo
 
 ## 03-静态特征修改
 
-- [ ] 去除日志打印相关内容
+- [ ] 去除日志打印相关内容#Todo
+- [ ] 去除FRP相关的字段内容#Todo
 
 ## 04-流量特征修改
 
 - [x] 0x17特征修改
+- [x] 默认开启TLS
 
 ## 05-敏感信息隐藏
 
-- [ ] 服务端IP地址加密
-- [x] [程序运行后删除配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/cmd/frpc/root.go)：例子：frpc.exe --delini
-- [x] [远程加载配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/config/value.go)：例子：frpc.exe -c http://127.0.0.1/frpc.ini
+- [x] [配置文件自动删除](https://github.com/Goqi/Erfrp/blob/main/pkg/cmd/frpc/root.go)：frpc.exe --delini
+
+  ```
+  	// 删除配置文件
+  	// 程序运行时添加--delini命令
+  	if delEnable == true {
+  		err := os.Remove(cfgFile)
+  		if err != nil {
+  			return err
+  		}
+  	}
+  ```
+
+- [x] [远程加载配置文件](https://github.com/Goqi/Erfrp/blob/main/pkg/config/value.go)：frpc.exe -c http://127.0.0.1/frpc.ini
+
+  ```
+  func GetRenderedConfFromFile(path string) (out []byte, err error) {
+  	var b []byte
+  	rawUrl := path
+  	if strings.Contains(rawUrl, "http") {
+  		log.Info("Remote load ini file")
+  		response, _err1 := http.Get(path)
+  		if _err1 != nil {
+  			return
+  		}
+  		defer response.Body.Close()
+  		body, _err := io.ReadAll(response.Body)
+  		if _err != nil {
+  			return
+  		}
+  		httpContent := string(body)
+  		var content = []byte(httpContent)
+  		out, err = RenderContent(content)
+  		return
+  
+  	} else {
+  		log.Info("Local load ini file")
+  		b, err = os.ReadFile(path)
+  		if err != nil {
+  			return
+  		}
+  		localContent := string(b)
+  		var content = []byte(localContent)
+  		out, err = RenderContent(content)
+  		return
+  	}
+  }
+  ```
+
+- [x] [服务端IP地址加密](https://github.com/Goqi/Erfrp/blob/main/pkg/client/service.go)：需要在代码上面修改aes的key和加密后的字符
+
+  ```
+  package dscrypto
+  
+  // 对服务器IP进行隐藏需要修改此处的AESKey和AESencryptCode。
+  // 同时需要对frpc.ini中的server_addr进行修改，修改成AESencryptCode。
+  // server_addr支持正常的ip和加密之后的ip，2种形式。
+  var (
+  	VpsIP          = "192.168.1.22"
+  	AESKey         = "9d9d14b5f6650726afe17e1af4052632" //Erfrp
+  	AESencryptCode = "J6X+PfMnVldSaM1tpjaNKw=="
+  	//AESencryptCode = "2HrQDAPV5JgjckfYkO9u4g=="
+  )
+  ```
 
 ## 06-参考项目资源
 
+- [frp代码分析报告](https://github.com/Goqi/ErKai/tree/main/0x04/frp)
 - https://github.com/atsud0/frp-modify
 - https://github.com/OrangeWatermelon/frp_cmd
 - https://github.com/baibaicloud/frp
