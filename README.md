@@ -279,7 +279,7 @@
 
 ## 05-敏感信息隐藏
 
-- [x] [配置文件自动删除](https://github.com/Goqi/Erfrp/blob/main/pkg/cmd/frpc/root.go)：frpc.exe --delini
+- [x] [配置文件自动删除](https://github.com/Goqi/Erfrp/blob/main/cmd/frpc/root.go)：frpc.exe --delini
 
   ```
   	// 删除配置文件
