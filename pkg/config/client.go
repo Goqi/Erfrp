@@ -34,6 +34,7 @@ type ClientCommonConf struct {
 	// ServerAddr specifies the address of the server to connect to. By
 	// default, this value is "0.0.0.0".
 	ServerAddr string `ini:"server_addr" json:"server_addr"`
+	//AESKEY     string `ini:"AESKEY" json:"AESKEY"`
 	// ServerPort specifies the port to connect to the server on. By default,
 	// this value is 7000.
 	ServerPort int `ini:"server_port" json:"server_port"`
@@ -42,7 +43,7 @@ type ClientCommonConf struct {
 	// DialServerKeepAlive specifies the interval between keep-alive probes for an active network connection between frpc and frps.
 	// If negative, keep-alive probes are disabled.
 	DialServerKeepAlive int64 `ini:"dial_server_keepalive" json:"dial_server_keepalive"`
-	// ConnectServerLocalIP specifies the address of the client bind when it connect to server.
+	// ConnectServerLocalIP specifies the address of the client bind when it connects to server.
 	// By default, this value is empty.
 	// this value only use in TCP/Websocket protocol. Not support in KCP protocol.
 	ConnectServerLocalIP string `ini:"connect_server_local_ip" json:"connect_server_local_ip"`
@@ -104,7 +105,7 @@ type ClientCommonConf struct {
 	// DNSServer specifies a DNS server address for FRPC to use. If this value
 	// is "", the default DNS will be used. By default, this value is "".
 	DNSServer string `ini:"dns_server" json:"dns_server"`
-	// LoginFailExit controls whether or not the client should exit after a
+	// LoginFailExit controls whether the client should exit after a
 	// failed login attempt. If false, the client will retry until a login
 	// attempt succeeds. By default, this value is true.
 	LoginFailExit bool `ini:"login_fail_exit" json:"login_fail_exit"`
@@ -117,7 +118,7 @@ type ClientCommonConf struct {
 	// Valid values are "tcp", "kcp" and "websocket". By default, this value
 	// is "tcp".
 	Protocol string `ini:"protocol" json:"protocol"`
-	// TLSEnable specifies whether or not TLS should be used when communicating
+	// TLSEnable specifies whether TLS should be used when communicating
 	// with the server. If "tls_cert_file" and "tls_key_file" are valid,
 	// client will load the supplied tls configuration.
 	TLSEnable bool `ini:"tls_enable" json:"tls_enable"`

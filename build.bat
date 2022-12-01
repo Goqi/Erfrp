@@ -15,3 +15,10 @@ SET GOOS=linux
 SET GOARCH=amd64
 go build -ldflags "-w -s" -o release/frpc frpc.go
 go build -ldflags "-w -s" -o release/frps frps.go
+
+@echo off
+SET CGO_ENABLED=0
+SET GOOS=darwin
+SET GOARCH=amd64
+go build -ldflags "-w -s" -o release/frpc_darwin frpc.go
+go build -ldflags "-w -s" -o release/frps_darwin frps.go

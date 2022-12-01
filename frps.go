@@ -19,7 +19,7 @@ import (
 
 func main() {
 
-	crypto.DefaultSalt = "frp"
+	crypto.DefaultSalt = "Erfrp"
 	rand.Seed(time.Now().UnixNano())
 
 	frps.Execute()

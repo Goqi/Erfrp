@@ -15,14 +15,14 @@
 package consts
 
 var (
-	// proxy status
+	// Idle proxy status
 	Idle    = "idle"
 	Working = "working"
 	Closed  = "closed"
 	Online  = "online"
 	Offline = "offline"
 
-	// proxy type
+	// TCPProxy proxy type
 	TCPProxy    = "tcp"
 	UDPProxy    = "udp"
 	TCPMuxProxy = "tcpmux"
@@ -32,10 +32,10 @@ var (
 	XTCPProxy   = "xtcp"
 	SUDPProxy   = "sudp"
 
-	// authentication method
+	// TokenAuthMethod authentication method
 	TokenAuthMethod = "token"
 	OidcAuthMethod  = "oidc"
 
-	// TCP multiplexer
+	// HTTPConnectTCPMultiplexer TCP multiplexer
 	HTTPConnectTCPMultiplexer = "httpconnect"
 )
