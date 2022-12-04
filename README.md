@@ -87,6 +87,8 @@
 
 - [x] [服务端IP地址加密](https://github.com/Goqi/Erfrp/blob/main/pkg/client/service.go)：需要在代码上面修改aes的key和加密后的字符
 
+  使用说明：[在代码中修改](https://github.com/Goqi/Erfrp/blob/main/pkg/dscrypto/var.go)AESKey和AESencryptCode的值为自己的。AESKey可不修改，默认使用Erfrp的md5值。在frpc.ini中将server_addr的值修改为AESencryptCode。
+  
   ```
   package dscrypto
   

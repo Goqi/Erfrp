@@ -2,10 +2,12 @@
 0 error(s),0 warning(s)
 Team:0e0w Security Team
 Author:0e0wTeam[at]gmail.com
-Datetime:2022/11/17 8:34
+Datetime:2022/12/4 18:40
 */
 
-package dscrypto
+// 生成 AESencryptCode
+
+package main
 
 import (
 	"bytes"
@@ -15,8 +17,10 @@ import (
 	"fmt"
 )
 
-func AES() {
-	encryptCode := AesEncrypt("192.168.1.22", "9d9d14b5f6650726afe17e1af4052632")
+func main() {
+	VpsIP := "192.168.1.22"                      //修改成自己的vps IP地址
+	AESKey := "9d9d14b5f6650726afe17e1af4052632" //修改成自己的AESkey
+	encryptCode := AesEncrypt(VpsIP, AESKey)
 	fmt.Println(encryptCode)
 }
 
